@@ -6,5 +6,6 @@ current_price: number;
 symbol:string;
 low_24h:number;
 high__24:number;
-image?:string;
+image:string;
+market_cap:number
 }
