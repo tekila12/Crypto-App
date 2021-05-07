@@ -1,11 +1,19 @@
 import React from 'react';
 import './App.css';
+import { BrowserRouter as Router, Route, Switch,  } from 'react-router-dom';
+import  Home  from './pages/Home';
+import { Coins } from './components/CoinData/Coins';
 
-import  Home from './pages/Home';
-function App() {
+
+const App = () => {
   return (
     <div className="App">
-       <Home />
+      <Router>
+        <Switch> 
+         <Route path='/coins' component={Coins}/>
+         <Route path='/' component={Home}/>
+        </Switch>
+      </Router>  
     </div>
   );
 }
