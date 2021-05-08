@@ -1,11 +1,9 @@
-import React,  {useEffect, useState} from 'react'
-
-
+import React,  {lazy, Suspense, useEffect, useState} from 'react'
 import {ICoin} from '../../interface'
-import Coin from './Coin'
+import './Coins.css'
+const CoinTable = lazy(() => import('./CoinTable'))
+
 const URL ='https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false'
-
-
 
  export const Coins:React.FC = () => {
 
@@ -22,13 +20,25 @@ const URL ='https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order
           fetchData()
       },)
     return (
-        <div>
+        <>
+          <Suspense fallback={<div>Loading...</div>}>
+          <table className="table" width="80%">  
+        <thead>
+          <tr>
+            <th>Cryptocurrency</th>
+            <th>Price</th>
+            <th>Market Cap</th>
+            <th>24H Change</th>
+          </tr>
+        </thead>
+        </table>
           {coinsData.map((coin)=>
-         <Coin key={coin.id}
+         <CoinTable key={coin.id}
                {...coin}
                 />
           )}
-         </div>
+          </Suspense>   
+         </>
     )
 }
 

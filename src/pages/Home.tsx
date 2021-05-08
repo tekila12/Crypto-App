@@ -1,34 +1,39 @@
 import React, { useEffect, useState} from 'react'
 import axios from  'axios'
 import { ResponseObject, Coin } from '../interfaces';
-import { Link} from 'react-router-dom';
+import { Link, useHistory} from 'react-router-dom';
+import './Home.css'
 const TRENDING = 'https://api.coingecko.com/api/v3/search/trending'
 const Home:React.FC= () => {
-  
-    const [trending, setTrending ] = useState<Coin[]>([])
-    const fetchData=async()=>{
-    const response= await fetch(TRENDING)
-    const result = await response.json()
-        setTrending(result.coins); 
-        console.log(trending)
-    }
     
+    const history= useHistory()
+    const [trending, setTrending ] = useState<Coin[]>([])
     useEffect(()=>{
-        fetchData()
-    },)
+        axios
+        .get<ResponseObject>(TRENDING)
+        .then((response) =>{
+            setTrending(response.data.coins)
+            console.log(response.data)
+        })
+        .catch(err =>{
+            console.log(err)
+        })
+
+    })
+
+
 
     return (
-        <div>  
+        <div className='home__container'>  
+            <h1>Currently trending coins</h1>
            {trending.map((trend) => (
-          <div key={trend.item.id}>{trend.item.name}
-          <img src={trend.item.symbol} />
-          <h1>{trend.item.market_cap_rank}</h1>
-          <h2>{trend.item.thumb}</h2>
-          <img src={trend.item.large} />
+          <div className='trending__container' key={trend.item.id}>{trend.item.name}
+          <span>{trend.item.symbol} </span>
+          <h5 className='trending__position'>{trend.item.market_cap_rank}</h5>
+          <img className='trending__image' alt='' src={trend.item.large}></img> 
           </div>
           ))}
-         <Link to='/coins'>Check to see the price of the other coins</Link>
-        
+        <button onClick={()=>{history.push('/coins')}}></button>
         </div>
     )
 }

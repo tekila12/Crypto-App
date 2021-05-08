@@ -1,0 +1,27 @@
+table {
+  background: #ccc;
+  min-height: 100%;
+  margin: 0 auto;
+}
+table thead tr {
+  background: #777;
+  padding: 1rem 0;
+  /* border-bottom:1px solid #333; */
+}
+table thead tr th {
+  text-align: left;
+  color: #fff;
+  font-weight: 600;
+  padding: 1rem;
+}
+
+table tbody tr {
+  background: #333;
+  padding: 2rem 0;
+  margin-bottom: 1rem;
+  color: #ccc;
+}
+
+table tbody tr td {
+  padding: 1rem;
+}
