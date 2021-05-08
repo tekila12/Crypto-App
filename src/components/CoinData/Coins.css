@@ -1,18 +1,20 @@
 table {
   background: #ccc;
+  margin-top: 100px;
   min-height: 100%;
   margin: 0 auto;
 }
 table thead tr {
   background: #777;
   padding: 1rem 0;
-  /* border-bottom:1px solid #333; */
+  border-bottom: 1px solid #333;
 }
 table thead tr th {
   text-align: left;
   color: #fff;
   font-weight: 600;
   padding: 1rem;
+  width: 112px;
 }
 
 table tbody tr {
@@ -24,4 +26,18 @@ table tbody tr {
 
 table tbody tr td {
   padding: 1rem;
+  width: 180px;
+}
+
+.table__img {
+  width: 50px;
+  height: 50px;
+}
+
+.text__danger {
+  color: red;
+}
+
+.text__success {
+  color: green;
 }

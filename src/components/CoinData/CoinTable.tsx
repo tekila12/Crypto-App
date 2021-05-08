@@ -14,13 +14,14 @@ const CoinTable: React.FC <ICoin> = ({...coin}) => {
         <table className="table" width="80%">     
         <tbody key={coin.id}>           
             <tr>
-            <td><span>{coin.market_cap_rank}<img src={coin.image} alt=''/>{coin.name}</span> </td>
-            <td><span>{coin.current_price}</span></td>   
+            <td><span>{coin.market_cap_rank}.
+            <img className='table__img' src={coin.image} alt=''/> {coin.name}</span> </td>
+            <td><span>${coin.current_price.toLocaleString()}</span></td>   
             <td>    <span
           className={
             coin.price_change_percentage_24h < 0
-              ? "text-danger mr-2"
-              : "text-success mr-2"
+              ? "text__danger"
+              : "text__success"
           }
         >
           {" "}
@@ -29,10 +30,9 @@ const CoinTable: React.FC <ICoin> = ({...coin}) => {
           ) : (
             <BsArrowUpShort className="down__arrow"></BsArrowUpShort>
           )}
-          {coin.price_change_percentage_24h}
+          {coin.price_change_percentage_24h.toFixed(3)}%
          </span></td>
             <td><span>{coin.market_cap.toLocaleString()}</span></td>
-            <p>{coin.symbol}</p>
             </tr>       
         </tbody>
         </table>
