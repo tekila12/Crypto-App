@@ -2,8 +2,12 @@ import React from 'react'
 
 const Search = () => {
     return (
-        <div>
-            <input placeholder='Search coins...' />
+        <div className="flex">
+        <div className="search">
+          <div>
+            <input type="text" placeholder="Search . . ." required/>
+          </div>
+          </div>
         </div>
     )
 }

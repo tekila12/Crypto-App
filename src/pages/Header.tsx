@@ -1,7 +1,7 @@
 import React from 'react'
 import Search from './Search'
 import { Link  } from 'react-router-dom';
-import Themes from '../Theme/Themes';
+
 
 const Header = () => {
     return (
@@ -10,7 +10,7 @@ const Header = () => {
             <img alt ='' src='./icons/logo.png' />
             </Link>
             <Search />
-            <Themes />
+          
         </div>
     )
 }
