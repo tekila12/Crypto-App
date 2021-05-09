@@ -8,6 +8,7 @@ const CoinTable = lazy(() => import('../../components/CoinData/CoinTable'))
 
  export const Coins:React.FC = () => {
 
+  const [loading, setLoading] =useState(false)
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(10);
   const [coinsData, setCoinsData] = useState<ICoin[]>([])
@@ -25,19 +26,26 @@ const CoinTable = lazy(() => import('../../components/CoinData/CoinTable'))
    
       
       useEffect(()=>{
- 
-    const fetchData= async()=>{
-      const response= await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&page=${page}&per_page=10&sparkline=false`)
-      const result = await response.json()
+       const fetchData= async()=>{
+       setLoading(true);
+       const response= await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&page=${page}&per_page=10&sparkline=false`)
+       const result = await response.json()
           setCoinsData(result); 
           setTotalPages(totalPages);
+          setLoading(false)
       }
-
           fetchData()
       },[page, totalPages])
+
+
     return (
         <>
           <Suspense fallback={<div>Loading...</div>}>
+          {loading ? (
+        <div className="list-loader">
+          <h1>Loading...</h1>
+        </div>
+          ):null}      
           <table className="table" width="80%">  
         <thead>
           <tr>

@@ -15,25 +15,25 @@ const Pagination:React.FC <Props>= ({
   handleNextPage,
 }) => {
   return (
-    <div className="pagination-button-wrapper">
+    <div className="pagination__container">
       <button
-        className="pagination-button"
+        className="pagination__button"
         onClick={() => handlePrevPage(currentPage)}
         disabled={currentPage === 1}
       >
         &larr;
       </button>
 
-      <span className="pagination-page-info">
+      <span className="pagination__info">
         Page {currentPage} of {totalPages}
       </span>
 
       <button
-        className="pagination-button"
+        className="pagination__button"
         onClick={() => handleNextPage(currentPage)}
         disabled={currentPage === totalPages}
       >
-       
+         &rarr;
       </button>
     </div>
   );

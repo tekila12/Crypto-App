@@ -14,7 +14,7 @@ table thead tr th {
   color: #fff;
   font-weight: 600;
   padding: 1rem;
-  width: 112px;
+  width: 134px;
 }
 
 table tbody tr {
@@ -32,6 +32,9 @@ table tbody tr td {
 .table__img {
   width: 50px;
   height: 50px;
+  margin-left: 5px;
+  margin-right: 10px;
+  border-radius: 10px;
 }
 
 .text__danger {
@@ -44,13 +47,13 @@ table tbody tr td {
 
 /*Pagination */
 
-.pagination-button-wrapper {
+.pagination__container {
   display: flex;
   justify-content: center;
   padding: 1rem 0;
 }
 
-.pagination-button {
+.pagination__button {
   border: none;
   background: rgb(79, 79, 207);
   padding: 0.5rem 1rem;
@@ -62,11 +65,11 @@ table tbody tr td {
   transition: all 0.3s ease-in;
 }
 
-.pagination-button:hover {
+.pagination__button:hover {
   color: rgb(10, 10, 134);
 }
 
-.pagination-page-info {
+.pagination__info {
   display: flex;
   font-weight: 500;
   color: #000;
