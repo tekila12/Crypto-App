@@ -21,12 +21,12 @@ const DarkMode = () => {
   const switchTheme = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     if (theme === darkTheme) {
       body.classList.replace(darkTheme, lightTheme);
-     (e.target as EventTarget).classList.remove(clickedClass);
+     (e.target as any).classList.remove(clickedClass);
       localStorage.setItem("theme", "light");
       theme = lightTheme;
     } else {
       body.classList.replace(lightTheme, darkTheme);
-     (e.target as EventTarget).classList.add(clickedClass);
+     (e.target as any).classList.add(clickedClass);
       localStorage.setItem("theme", "dark");
       theme = darkTheme;
     }

@@ -5,7 +5,7 @@ const Search = () => {
         <div className="flex">
         <div className="search">
           <div>
-            <input type="text" placeholder="Search . . ." required/>
+            <input  type="text" placeholder="Search . . ." required/>
           </div>
           </div>
         </div>
