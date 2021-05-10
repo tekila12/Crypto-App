@@ -18,7 +18,6 @@ const Home:React.FC= () => {
         .catch(err =>{
             console.log(err)
         })
-
     })
 
 
@@ -27,7 +26,7 @@ const Home:React.FC= () => {
         <div className='home__container'>  
             <h1>Currently trending coins</h1>
            {trending.map((trend) => (
-          <div className='trending__container' key={trend.item.id}>{trend.item.name}
+          <div  className='trending__container' key={trend.item.id}>{trend.item.name}
           <span>{trend.item.symbol} </span>
           <h5 className='trending__position'>{trend.item.market_cap_rank}</h5>
           <img className='trending__image' alt='' src={trend.item.large}></img> 
