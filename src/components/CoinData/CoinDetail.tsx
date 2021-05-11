@@ -1,7 +1,9 @@
+import { Chart } from 'chart.js';
 import React,{useEffect, useState} from 'react'
 import {useParams} from 'react-router-dom'
 import api from "../../api/api";
-const CoinDetailPage = () => {
+import ChartData from '../../pages/ChartData'
+const CoinDetailPage:React.FC = () => {
     const { id } = useParams<{ id: string }>();
     const [coinData, setCoinData] = useState({});
     const [isLoading, setIsLoading] = useState(false);
@@ -64,7 +66,7 @@ const CoinDetailPage = () => {
       }
       return (
         <div className="coinlist">
-       
+          <ChartData data={coinData} />
         </div>
       );
     };
