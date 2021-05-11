@@ -1,11 +1,11 @@
 table {
-  background: #ccc;
-  margin-top: 100px;
+  background: rgb(149, 148, 148);
   min-height: 100%;
   margin: 0 auto;
+  font-family: "Lato", sans-serif;
 }
 table thead tr {
-  background: #777;
+  background: rgb(21, 54, 131);
   padding: 1rem 0;
   border-bottom: 1px solid #333;
 }
@@ -54,8 +54,8 @@ table tbody tr td {
 }
 
 .pagination__button {
-  border: none;
-  background: rgb(79, 79, 207);
+  border: 1px solid black;
+  background: rgb(21, 54, 131);
   padding: 0.5rem 1rem;
   border-radius: 1rem;
   color: #fff;
@@ -76,4 +76,33 @@ table tbody tr td {
   margin: 0 1rem;
   height: 30px;
   align-items: center;
+}
+
+@media all and (max-width: 1088px) {
+  table thead tr th {
+    width: 110px;
+  }
+
+  table tbody tr td {
+    width: 120px;
+    font-size: 14px;
+  }
+
+  .table__img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .table {
+    width: 70%;
+  }
+}
+@media all and (max-width: 859px) {
+  table thead tr th {
+    width: 60px;
+  }
+  table tbody tr td {
+    width: 90px;
+    font-size: 14px;
+  }
 }

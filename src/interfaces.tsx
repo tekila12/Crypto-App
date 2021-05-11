@@ -6,6 +6,7 @@ export interface Item {
     thumb: string;
     large: string;
     score: number;
+    price_btc:number;
 }
 
 export interface Coin {

@@ -2,6 +2,7 @@ import { Chart } from 'chart.js';
 import React,{useEffect, useState} from 'react'
 import {useParams} from 'react-router-dom'
 import api from "../../api/api";
+import Loading from '../../Loading/Loading';
 import ChartData from '../../pages/ChartData'
 const CoinDetailPage:React.FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -62,7 +63,7 @@ const CoinDetailPage:React.FC = () => {
   
     const renderData = () => {
       if (isLoading) {
-        return <div>Loading....</div>;
+       <Loading />
       }
       return (
         <div className="coinlist">

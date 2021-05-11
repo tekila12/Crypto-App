@@ -1,38 +1,46 @@
 import React, { useEffect, useState} from 'react'
-import axios from  'axios'
-import { ResponseObject, Coin } from '../interfaces';
-import { Link, useHistory} from 'react-router-dom';
+import {  Coin } from '../interfaces';
+import {  useHistory} from 'react-router-dom';
+import Loading from '../Loading/Loading';
 import './Home.css'
-const TRENDING = 'https://api.coingecko.com/api/v3/search/trending'
+import api from '../api/api';
 const Home:React.FC= () => {
     
     const history= useHistory()
+    const [isLoading, setIsLoading] = useState(false);
     const [trending, setTrending ] = useState<Coin[]>([])
     useEffect(()=>{
-        axios
-        .get<ResponseObject>(TRENDING)
-        .then((response) =>{
-            setTrending(response.data.coins)
-            console.log(response.data)
-        })
-        .catch(err =>{
-            console.log(err)
-        })
-    })
+        const fetchData = async () => {
+            setIsLoading(true);
+            const response = await api.get("/search/trending", {
+                params: {      
+                  },
+                });
+                setTrending(response.data.coins);
+                setIsLoading(false);
+                console.log(response)
+              };
+            fetchData()
+        },[])
+  
 
 
 
     return (
         <div className='home__container'>  
+          {isLoading ? (
+           <Loading />
+          ):null}      
             <h1>Currently trending coins</h1>
            {trending.map((trend) => (
           <div  className='trending__container' key={trend.item.id}>{trend.item.name}
           <span>{trend.item.symbol} </span>
           <h5 className='trending__position'>{trend.item.market_cap_rank}</h5>
           <img className='trending__image' alt='' src={trend.item.large}></img> 
+          <h4>{trend.item.price_btc.toFixed(4)}</h4>
           </div>
           ))}
-        <button onClick={()=>{history.push('/coins')}}></button>
+        <button className='trending__button' onClick={()=>{history.push('/coins')}}>More coins...</button>
         </div>
     )
 }

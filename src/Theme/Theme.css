@@ -1,22 +1,22 @@
 #darkMode {
-  background-color: green;
-  background-size: 30px 30px;
-  width: 45px;
-  height: 45px;
-  filter: grayscale(100%);
+  background-image: url("");
+  background-size: 40px 40px;
+  width: 40px;
+  height: 40px;
   border: none;
   border-radius: 50%;
+  margin-right: 10px;
+  margin-left: 10px;
   transition: background-color 0.3s ease-in-out, filter 0.3s ease-in-out;
 }
 
 #darkMode:hover,
 #darkMode:focus {
   filter: none;
-  background-color: black;
   cursor: pointer;
 }
 
 #darkMode.clicked {
   filter: none !important;
-  background-color: black;
+  background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmzRwxBFOEnZaySjTAnTQlaDqtivN0Stf3rg&usqp=CAU") !important;
 }
