@@ -6,7 +6,7 @@ interface Props{
 }
 
 const ChartData:React.FC<Props> = ({ data}) => {
-  const chartRef = useRef<HTMLCanvasElement>(null);
+  const chartRef = useRef<HTMLCanvasElement | null>(null);
   const { day, week, year, detail } = data;
   const [timeFormat, setTimeFormat] = useState("24h");
 
@@ -27,6 +27,7 @@ const ChartData:React.FC<Props> = ({ data}) => {
     if (chartRef && chartRef.current && detail) {
   const chartInstance = new Chart(chartRef.current, {
         type: "line",
+
         data: {
           datasets: [
             {
@@ -41,6 +42,7 @@ const ChartData:React.FC<Props> = ({ data}) => {
         options: {
           ...historyOptions,
         },
+        
       });
     }
   });
@@ -66,6 +68,7 @@ const ChartData:React.FC<Props> = ({ data}) => {
   return (
     <div  className="bg-white border mt-2 rounded p-3">
       <div>{renderPrice()}</div>
+    
       <div>
         <canvas ref={chartRef} id="myChart" width={250} height={250}></canvas>
       </div>
@@ -88,7 +91,7 @@ const ChartData:React.FC<Props> = ({ data}) => {
           className="btn btn-outline-secondary btn-sm"
         >
           1y
-        </button>
+        </button> 
       </div>
     </div>
   );

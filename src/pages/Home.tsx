@@ -40,7 +40,9 @@ const Home:React.FC= () => {
           <h4>{trend.item.price_btc.toFixed(4)}</h4>
           </div>
           ))}
-        <button className='trending__button' onClick={()=>{history.push('/coins')}}>More coins...</button>
+          <div>
+          <button className='trending__button' onClick={()=>{history.push('/coins')}}>More coins...</button>
+          </div>
         </div>
     )
 }

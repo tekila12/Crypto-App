@@ -24,9 +24,13 @@ table tbody tr {
   color: #ccc;
 }
 
+.table__content {
+  width: 30px;
+}
 table tbody tr td {
   padding: 1rem;
   width: 180px;
+  cursor: pointer;
 }
 
 .table__img {
@@ -99,10 +103,126 @@ table tbody tr td {
 }
 @media all and (max-width: 859px) {
   table thead tr th {
-    width: 60px;
+    width: 25.5%;
+    font-size: 14px;
   }
   table tbody tr td {
-    width: 90px;
+    width: 10%;
+    font-size: 13px;
+  }
+
+  .table__content {
+    width: 60px;
+    display: block;
+  }
+}
+
+@media all and (max-width: 720px) {
+  table thead tr th {
+    width: 26.5%;
+
     font-size: 14px;
+  }
+  table tbody tr td {
+    width: 10%;
+    font-size: 13px;
+  }
+
+  .table__content {
+    width: 70px;
+  }
+
+  .table {
+    width: 75%;
+  }
+}
+
+@media all and (max-width: 664px) {
+  table thead tr th {
+    width: 26.5%;
+
+    font-size: 13px;
+  }
+  table tbody tr td {
+    width: 10%;
+
+    font-size: 12px;
+  }
+
+  .table__content {
+    width: 70px;
+  }
+
+  .table {
+    width: 90%;
+  }
+}
+
+@media all and (max-width: 564px) {
+  table thead tr th {
+    width: 26.5%;
+
+    font-size: 13px;
+  }
+  table tbody tr td {
+    width: 10%;
+
+    font-size: 12px;
+  }
+
+  .table__content {
+    width: 70px;
+  }
+}
+
+@media all and (max-width: 516px) {
+  table thead tr th {
+    width: 28.5%;
+    font-size: 13px;
+  }
+  table tbody tr td {
+    width: 30%;
+    font-size: 12px;
+  }
+
+  .table__content {
+    width: 90px;
+  }
+  .table__container {
+    min-height: 100%;
+    margin: 0;
+  }
+  .table {
+    width: 95%;
+  }
+}
+
+@media all and (max-width: 516px) {
+  table thead tr th {
+    width: 27.5%;
+    font-size: 13px;
+  }
+
+  .table__container {
+    display: block;
+  }
+  table tbody tr td {
+    width: 14px;
+    font-size: 12px;
+  }
+
+  .table__content {
+    display: block;
+    display: contents;
+    position: relative;
+    width: 75%;
+    max-width: 70px;
+  }
+  .table__container {
+    min-height: 100%;
+    margin: 0;
+  }
+  .table {
+    width: 99%;
   }
 }
