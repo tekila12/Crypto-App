@@ -82,6 +82,15 @@ table tbody tr td {
   align-items: center;
 }
 
+/*Chart */
+
+.chart__container {
+  margin: 0 auto;
+}
+
+.canvas__container {
+  margin: 0 auto;
+}
 @media all and (max-width: 1088px) {
   table thead tr th {
     width: 110px;

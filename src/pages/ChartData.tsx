@@ -1,52 +1,79 @@
 import React, { useRef, useEffect, useState } from "react";
 import { historyOptions } from "../chartConfig/chartConfig";
 import Chart from 'chart.js/auto';
-interface Props{
-  data:any
+
+
+const determineTimeFormat = (
+  timeFormat: string,
+  day: any,
+  week: any,
+  year: any
+) => {
+  switch (timeFormat) {
+    case "24h":
+      return day;
+    case "7d":
+      return week;
+    case "1y":
+      return year;
+    default:
+      return day;
+  }
+};
+
+interface Props {
+  data: any
 }
 
-const ChartData:React.FC<Props> = ({ data}) => {
-  const chartRef = useRef<HTMLCanvasElement | null>(null);
+const ChartData: React.FC<Props> = ({ data }) => {
+  const chartCanvasRef = useRef<HTMLCanvasElement | null>(null);
   const { day, week, year, detail } = data;
   const [timeFormat, setTimeFormat] = useState("24h");
+  const [isRebuildingCanvas, setIsRebuildingCanvas] = useState(false);
 
-  const determineTimeFormat = () => {
-    switch (timeFormat) {
-      case "24h":
-        return day;
-      case "7d":
-        return week;
-      case "1y":
-        return year;
-      default:
-        return day;
+  // remove the canvas whenever timeFormat changes
+  useEffect(() => {
+    setIsRebuildingCanvas(true);
+  }, [timeFormat]); // timeFormat must be present in deps array for this to work
+
+  /* if isRebuildingCanvas was true for the latest render, 
+    it means the canvas element was just removed from the dom. 
+    set it back to false to immediately re-create a new canvas */
+  useEffect(() => {
+    if (isRebuildingCanvas) {
+      setIsRebuildingCanvas(false);
     }
-  };
+  }, [isRebuildingCanvas]);
 
   useEffect(() => {
-    if (chartRef && chartRef.current && detail) {
-  const chartInstance = new Chart(chartRef.current, {
-        type: "line",
-
-        data: {
-          datasets: [
-            {
-              label: `${detail.name} price`,
-              data: determineTimeFormat(),
-              backgroundColor: "rgba(174, 305, 194, 0.5)",
-              borderColor: "rgba(174, 305, 194, 0.4",
-              pointRadius: 0,
-            },
-          ],
-        },
-        options: {
-          ...historyOptions,
-        },
-        
-      });
+      if (chartCanvasRef && chartCanvasRef.current && detail) {
+    const chartCanvas = chartCanvasRef.current
+    if (isRebuildingCanvas || !chartCanvas) {
+      return;
     }
-  });
-
+  
+    const chartInstance = new Chart(chartCanvasRef.current, {
+      type: "line",
+      data: {
+        datasets: [
+          {
+            label: `${detail.name} price`,
+            data: determineTimeFormat(timeFormat, day, week, year),
+            backgroundColor: "rgba(174, 305, 194, 0.5)",
+            borderColor: "rgba(174, 305, 194, 0.4",
+            pointRadius: 0,
+          },
+        ],
+      },
+      options: {
+        ...historyOptions,
+      },
+    });
+    return () => {
+      chartInstance.destroy();
+    }
+  }}, [day, isRebuildingCanvas,timeFormat, week, year, detail]);
+ 
   const renderPrice = () => {
     if (detail) {
       return (
@@ -65,35 +92,17 @@ const ChartData:React.FC<Props> = ({ data}) => {
       );
     }
   };
+  
   return (
-    <div  className="bg-white border mt-2 rounded p-3">
-      <div>{renderPrice()}</div>
-    
-      <div>
-        <canvas ref={chartRef} id="myChart" width={250} height={250}></canvas>
-      </div>
-
-      <div className="chart-button mt-1">
-        <button
-          onClick={() => setTimeFormat("24h")}
-          className="btn btn-outline-secondary btn-sm"
-        >
-          24h
-        </button>
-        <button
-          onClick={() => setTimeFormat("7d")}
-          className="btn btn-outline-secondary btn-sm mx-1"
-        >
-          7d
-        </button>
-        <button
-          onClick={() => setTimeFormat("1y")}
-          className="btn btn-outline-secondary btn-sm"
-        >
-          1y
-        </button> 
-      </div>
-    </div>
+    <>
+    {renderPrice()}
+      {isRebuildingCanvas ? undefined : (
+        <canvas ref={chartCanvasRef} id='myChart' width={250} height={250} />
+      )}
+      <button onClick={() => setTimeFormat("24h")}>24h</button>
+      <button onClick={() => setTimeFormat("7d")}>7d</button>
+      <button onClick={() => setTimeFormat("1y")}>1y</button>
+    </>
   );
 };
 

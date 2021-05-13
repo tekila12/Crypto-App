@@ -3,7 +3,7 @@ import { Link, useHistory  } from 'react-router-dom';
 import DarkMode from '../Theme/DarkMode';
 import { ICoin } from '../interface';
 import api from '../api/api';
-
+import Search from './Search'
 
 
 const Header:React.FC = () => {
@@ -60,14 +60,8 @@ const Header:React.FC = () => {
           );
         })
       ))}
-     <div className="flex">
-        <div className="search">
-          <div className='search__wrapper'>
-            <input  value ={searchValue} 
-              onChange={(e) => setSearchValue(e.target.value)}  type="text" placeholder="Search . . ." />
-          </div>
-          </div>
-        </div>
+          <Search searchValue={searchValue}
+           setSearchValue={setSearchValue}/>
           <DarkMode />
         </div>
     )
