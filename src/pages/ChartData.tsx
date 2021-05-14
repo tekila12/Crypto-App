@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
-import { historyOptions } from "../chartConfig/chartConfig";
+import { historyOptions } from '../chartConfig/chartConfig';
 import Chart from 'chart.js/auto';
+
 
 
 const determineTimeFormat = (
@@ -59,14 +60,14 @@ const ChartData: React.FC<Props> = ({ data }) => {
           {
             label: `${detail.name} price`,
             data: determineTimeFormat(timeFormat, day, week, year),
-            backgroundColor: "rgba(174, 305, 194, 0.5)",
+            backgroundColor:  "rgba(174, 305, 194, 0.5)",
             borderColor: "rgba(174, 305, 194, 0.4",
             pointRadius: 0,
           },
         ],
       },
       options: {
-        ...historyOptions,
+        historyOptions
       },
     });
     return () => {
@@ -78,12 +79,12 @@ const ChartData: React.FC<Props> = ({ data }) => {
     if (detail) {
       return (
         <>
-          <p className="my-0">${detail.current_price.toFixed(2)}</p>
+          <p className="">${detail.current_price.toFixed(2)}</p>
           <p
             className={
               detail.price_change_24h < 0
-                ? "text-danger my-0"
-                : "text-success my-0"
+                ? "text__danger "
+                : "text__success "
             }
           >
             {detail.price_change_percentage_24h.toFixed(2)}%
