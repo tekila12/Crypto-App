@@ -2,16 +2,19 @@
   font-family: "Bebas Neue", cursive;
   font-size: 40px;
 }
-
+.home__container {
+  margin: 0 auto;
+}
 .header__container {
   align-items: center;
-  justify-content: center;
   width: 100%;
   height: 70px;
   position: relative;
   top: 0;
-  margin-bottom: 100px;
+  display: flex;
+  justify-content: space-between;
   border-bottom: 4px solid black;
+  background: var(--background-color);
 }
 
 .header__container > a > img {
@@ -68,25 +71,23 @@
 .flex {
   background: rgb(21, 54, 131);
   width: 80%;
-  height: 100%;
   margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: static !important;
+  position: relative;
+  margin-bottom: 100px;
 }
 
 .search {
   margin: 20px;
   text-align: center;
-  position: static !important;
 }
 
 .search > div {
   display: flex;
   justify-content: center;
   margin: 0;
-  position: static !important;
   text-align: center;
   filter: drop-shadow(0 1px #0091c2);
 }
@@ -109,11 +110,12 @@
   width: 20px;
   height: 20px;
   padding: 10px;
+  position: relative;
+  color: var(--white);
   border: solid 3px white;
   outline: none;
   border-radius: 35px;
   transition: width 0.5s;
-  position: static !important;
 }
 
 .search > div > input::placeholder {
@@ -135,19 +137,18 @@
 .search__coins {
   z-index: 1;
   width: 220px;
-  top: 3.8rem;
+  top: -7.5rem;
   max-height: 500px;
-  background: #333;
+  background: rgb(194, 192, 192);
   padding: 10px;
   text-align: center;
   border-radius: 6px;
   margin: 0 auto;
   border-radius: 6px;
   display: flex;
+  position: relative;
 }
 
-.search__wrapper {
-}
 @media all and(max-width:1088px) {
   .trending__container {
     width: 100px !important;

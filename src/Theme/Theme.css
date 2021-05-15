@@ -1,5 +1,5 @@
 #darkMode {
-  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmzRwxBFOEnZaySjTAnTQlaDqtivN0Stf3rg&usqp=CAU");
+  background-image: url("https://cdn4.iconfinder.com/data/icons/sun-11/50/44-512.png");
   background-size: 40px 40px;
   width: 40px;
   height: 40px;
@@ -7,6 +7,7 @@
   border-radius: 50%;
   margin-right: 10px;
   margin-left: 10px;
+  background-color: transparent;
   transition: background-color 0.3s ease-in-out, filter 0.3s ease-in-out;
 }
 
@@ -18,5 +19,5 @@
 
 #darkMode.clicked {
   filter: none !important;
-  background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmzRwxBFOEnZaySjTAnTQlaDqtivN0Stf3rg&usqp=CAU") !important;
+  background-image: url("https://static.thenounproject.com/png/1028-200.png") !important;
 }
