@@ -15,9 +15,9 @@ const CoinTable: React.FC <ICoin> = ({...coin}) => {
         <table onClick={() =>history.push(`/coins/${coin.id}`)}className="table" width="80%">     
         <tbody id={coin.id}>           
             <tr>
-            <td><span className='table__content'>{coin.market_cap_rank}.
+            <td><span className='table__content table__overflow'>{coin.market_cap_rank}.
             <img className='table__img' src={coin.image} alt=''/> {coin.name}</span> </td>
-            <td><span className='table__content'>${coin.current_price.toLocaleString()}</span></td>   
+            <td><span className='table__content table__overflow'>${coin.current_price.toLocaleString()}</span></td>   
             <td>    <span
           className={
             coin.price_change_percentage_24h < 0
@@ -33,7 +33,7 @@ const CoinTable: React.FC <ICoin> = ({...coin}) => {
           )}
           {coin.price_change_percentage_24h.toFixed(3)}%
          </span></td>
-            <td><span className='table__content'>{coin.market_cap.toLocaleString()}</span></td>
+            <td><span className='table__content '>{coin.market_cap.toLocaleString()}</span></td>
             </tr>       
         </tbody>
         </table>

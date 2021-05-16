@@ -12,8 +12,7 @@ import SearchCoins from './pages/SearchCoins';
 
 const App = () => {
   return (
-    <div className="App">
-     
+    <div>  
       <Router>
         <Header />
         <SearchCoins />

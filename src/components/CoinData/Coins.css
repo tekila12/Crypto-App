@@ -107,59 +107,23 @@ table tbody tr td {
   }
 
   .table {
-    width: 70%;
-  }
-}
-@media all and (max-width: 859px) {
-  table thead tr th {
-    width: 25.5%;
-    font-size: 14px;
-  }
-  table tbody tr td {
-    width: 10%;
-    font-size: 13px;
-  }
-
-  .table__content {
-    width: 60px;
-    display: block;
-  }
-}
-
-@media all and (max-width: 720px) {
-  table thead tr th {
-    width: 26.5%;
-
-    font-size: 14px;
-  }
-  table tbody tr td {
-    width: 10%;
-    font-size: 13px;
-  }
-
-  .table__content {
-    width: 70px;
-  }
-
-  .table {
-    width: 75%;
+    width: 90%;
   }
 }
 
 @media all and (max-width: 664px) {
   table thead tr th {
     width: 26.5%;
-
     font-size: 13px;
   }
   table tbody tr td {
-    width: 10%;
-
+    width: 27%;
     font-size: 12px;
   }
 
   .table__content {
-    width: 70px;
+    width: 90px;
+    display: flex;
   }
 
   .table {
@@ -167,46 +131,18 @@ table tbody tr td {
   }
 }
 
-@media all and (max-width: 564px) {
-  table thead tr th {
-    width: 26.5%;
-
-    font-size: 13px;
-  }
-  table tbody tr td {
-    width: 10%;
-
-    font-size: 12px;
-  }
-
-  .table__content {
-    width: 70px;
-  }
-}
-
-@media all and (max-width: 516px) {
-  table thead tr th {
-    width: 28.5%;
-    font-size: 13px;
-  }
-  table tbody tr td {
-    width: 30%;
-    font-size: 12px;
-  }
-
-  .table__content {
-    width: 90px;
-  }
-  .table__container {
-    min-height: 100%;
-    margin: 0;
-  }
+@media all and (max-width: 580px) {
   .table {
-    width: 95%;
+    width: 100%;
+    overflow-x: scroll;
+  }
+
+  .table__container {
+    width: 100%;
   }
 }
 
-@media all and (max-width: 516px) {
+@media all and (max-width: 460px) {
   table thead tr th {
     width: 27.5%;
     font-size: 13px;
@@ -216,22 +152,16 @@ table tbody tr td {
     display: block;
   }
   table tbody tr td {
-    width: 14px;
+    width: 84px;
     font-size: 12px;
   }
 
   .table__content {
     display: block;
-    display: contents;
-    position: relative;
-    width: 75%;
-    max-width: 70px;
+    width: 40px;
   }
   .table__container {
     min-height: 100%;
     margin: 0;
-  }
-  .table {
-    width: 99%;
   }
 }
