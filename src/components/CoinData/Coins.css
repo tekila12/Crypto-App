@@ -111,9 +111,9 @@ table tbody tr td {
   }
 }
 
-@media all and (max-width: 664px) {
+@media all and (max-width: 694px) {
   table thead tr th {
-    width: 26.5%;
+    width: 26.6%;
     font-size: 13px;
   }
   table tbody tr td {
@@ -134,9 +134,11 @@ table tbody tr td {
 @media all and (max-width: 580px) {
   .table {
     width: 100%;
-    overflow-x: scroll;
   }
-
+  table thead tr th {
+    width: 26.2%;
+    font-size: 13px;
+  }
   .table__container {
     width: 100%;
   }
@@ -144,24 +146,87 @@ table tbody tr td {
 
 @media all and (max-width: 460px) {
   table thead tr th {
-    width: 27.5%;
-    font-size: 13px;
+    width: 22.5%;
+    font-size: 12px;
+  }
+  .table__overflow {
+    width: 30px;
   }
 
+  .removed {
+    width: 60px;
+  }
   .table__container {
     display: block;
   }
   table tbody tr td {
-    width: 84px;
+    width: 74px;
     font-size: 12px;
   }
+  .text__danger {
+    display: block;
+    width: 0px;
+  }
 
+  .text__success {
+    display: block;
+    width: 0px;
+  }
   .table__content {
     display: block;
-    width: 40px;
+    width: 50px;
+  }
+}
+
+@media all and (max-width: 420px) {
+  table thead tr th {
+    max-width: 31.5%;
+    font-size: 13px;
+  }
+  .removed {
+    display: none;
+    visibility: hidden;
+  }
+  .table__container {
+    display: block;
+  }
+  table tbody tr td {
+    width: 24px;
+    font-size: 12px;
+  }
+  .table__overflow {
+    width: 0px;
+  }
+  .table__content {
+    width: 0px;
+  }
+
+  .text__danger {
+    display: block;
+    width: 0px;
+  }
+
+  .text__success {
+    display: block;
+    width: 0px;
   }
   .table__container {
     min-height: 100%;
     margin: 0;
+  }
+}
+
+@media all and (max-width: 390px) {
+  table thead tr th {
+    max-width: 28.5%;
+    font-size: 13px;
+  }
+
+  .table__content {
+    width: 20px;
+  }
+
+  .table__overflow {
+    width: 30px;
   }
 }

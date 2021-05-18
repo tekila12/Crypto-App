@@ -58,7 +58,7 @@ const CoinTable = lazy(() => import('../../components/CoinData/CoinTable'))
             <th>Cryptocurrencies</th>
             <th>Price</th>
             <th>24H Change</th>
-            <th>Market Cap</th>
+            <th className='removed'>Market Cap</th>
           </tr>
         </thead>
         </table>
