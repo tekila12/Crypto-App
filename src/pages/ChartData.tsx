@@ -4,6 +4,7 @@ import Chart from 'chart.js/auto';
 
 
 
+
 const determineTimeFormat = (
   timeFormat: string,
   day: any,
@@ -32,14 +33,10 @@ const ChartData: React.FC<Props> = ({ data }) => {
   const [timeFormat, setTimeFormat] = useState("24h");
   const [isRebuildingCanvas, setIsRebuildingCanvas] = useState(false);
 
-  // remove the canvas whenever timeFormat changes
   useEffect(() => {
     setIsRebuildingCanvas(true);
-  }, [timeFormat]); // timeFormat must be present in deps array for this to work
+  }, [timeFormat]);
 
-  /* if isRebuildingCanvas was true for the latest render, 
-    it means the canvas element was just removed from the dom. 
-    set it back to false to immediately re-create a new canvas */
   useEffect(() => {
     if (isRebuildingCanvas) {
       setIsRebuildingCanvas(false);
@@ -67,7 +64,25 @@ const ChartData: React.FC<Props> = ({ data }) => {
         ],
       },
       options: {
-        historyOptions
+        lineHeightAnnotation: {
+          always: true,
+          hover: true,
+          lineWeight: 1.5,
+        },
+      
+        animation: {
+          duration: 2000,
+        },
+        maintainAspectRatio: true,
+        responsive: true,
+        scales: {
+          xAxes: [
+            {
+              type: "time",
+              distribution: "linear",
+            },
+          ],
+        },
       },
     });
     return () => {
@@ -79,7 +94,7 @@ const ChartData: React.FC<Props> = ({ data }) => {
     if (detail) {
       return (
         <>
-          <p className="">${detail.current_price.toFixed(2)}</p>
+          <p className="">${detail.current_price}</p>
           <p
             className={
               detail.price_change_24h < 0
@@ -87,7 +102,7 @@ const ChartData: React.FC<Props> = ({ data }) => {
                 : "text__success "
             }
           >
-            {detail.price_change_percentage_24h.toFixed(2)}%
+            {detail.price_change_percentage_24h}%
           </p>
         </>
       );
@@ -95,15 +110,15 @@ const ChartData: React.FC<Props> = ({ data }) => {
   };
   
   return (
-    <>
+    <div className='chart__container'>
     {renderPrice()}
       {isRebuildingCanvas ? undefined : (
-        <canvas ref={chartCanvasRef} id='myChart' width={250} height={250} />
+        <canvas ref={chartCanvasRef} id='myChart'  />
       )}
-      <button onClick={() => setTimeFormat("24h")}>24h</button>
-      <button onClick={() => setTimeFormat("7d")}>7d</button>
-      <button onClick={() => setTimeFormat("1y")}>1y</button>
-    </>
+      <button className='time__format' onClick={() => setTimeFormat("24h")}>24h</button>
+      <button className='time__format' onClick={() => setTimeFormat("7d")}>7d</button>
+      <button className='time__format' onClick={() => setTimeFormat("1y")}>1y</button>
+    </div>
   );
 };
 

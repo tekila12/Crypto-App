@@ -59,7 +59,7 @@ const CoinDetailPage:React.FC = () => {
       };
   
       fetchData();
-    }, []);
+    }, [id]);
   
     const renderData = () => {
       if (isLoading) {

@@ -4,6 +4,7 @@
 }
 .home__container {
   margin: 0 auto;
+  text-align: center;
 }
 .header__container {
   align-items: center;

@@ -85,11 +85,26 @@ table tbody tr td {
 /*Chart */
 
 .chart__container {
+  background-color: var(--white);
+  width: 50%;
   margin: 0 auto;
+  height: 500px !important;
 }
 
 .canvas__container {
   margin: 0 auto;
+}
+
+#myChart {
+  height: 500px;
+}
+
+.time__format {
+  background: var(--white);
+  padding: 6px;
+  margin-right: 5px;
+  margin-bottom: 10px;
+  font-family: "Lato", sans-serif;
 }
 @media all and (max-width: 1088px) {
   table thead tr th {
