@@ -128,7 +128,7 @@ table tbody tr td {
 
 @media all and (max-width: 694px) {
   table thead tr th {
-    width: 26.6%;
+    width: 26.4%;
     font-size: 13px;
   }
   table tbody tr td {
@@ -156,6 +156,10 @@ table tbody tr td {
   }
   .table__container {
     width: 100%;
+  }
+
+  .removed{
+  width:120px
   }
 }
 
