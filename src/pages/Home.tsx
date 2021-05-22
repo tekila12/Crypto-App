@@ -34,7 +34,7 @@ const Home:React.FC= () => {
             <h1>Currently trending coins</h1>
            {trending.map((trend) => (
           <div  className='trending__container' key={trend.item.id}>{trend.item.name}
-          <span>{trend.item.symbol} </span>
+          <span className='trending__symbol'>{trend.item.symbol} </span>
           <h5 className='trending__position'>{trend.item.market_cap_rank}</h5>
           <img className='trending__image' alt='' src={trend.item.large}></img> 
           <h4>{trend.item.price_btc.toFixed(4)}</h4>
