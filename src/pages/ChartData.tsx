@@ -57,7 +57,7 @@ const ChartData: React.FC<Props> = ({ data }) => {
           {
             label: `${detail.name} price`,
             data: determineTimeFormat(timeFormat, day, week, year),
-            backgroundColor:  "rgba(174, 305, 194, 0.5)",
+            backgroundColor: 'rgba(134,159,152, 1)',
             borderColor: "rgba(174, 305, 194, 0.4",
             pointRadius: 0,
           },
@@ -76,11 +76,21 @@ const ChartData: React.FC<Props> = ({ data }) => {
         maintainAspectRatio: true,
         responsive: true,
         scales: {
-          xAxes: [
-            {
-              type: "time",
-              distribution: "linear",
+          yAxes: [{
+            ticks: {
+                beginAtZero: true
+            }
+        }],
+          x: [         
+            {  
+              ticks: {
+                beginAtZero: true,
+                autoSkip: false,
+                display: true,
             },
+              type: "time",
+            },
+            
           ],
         },
       },
@@ -113,11 +123,11 @@ const ChartData: React.FC<Props> = ({ data }) => {
     <div className='chart__container'>
     {renderPrice()}
       {isRebuildingCanvas ? undefined : (
-        <canvas ref={chartCanvasRef} id='myChart'  />
+        <canvas ref={chartCanvasRef} id='myChart'></canvas>
       )}
       <button className='time__format' onClick={() => setTimeFormat("24h")}>24h</button>
       <button className='time__format' onClick={() => setTimeFormat("7d")}>7d</button>
-      <button className='time__format' onClick={() => setTimeFormat("1y")}>1y</button>
+      <button className='time__format'  onClick={() => setTimeFormat("1y")}>1y</button>
     </div>
   );
 };

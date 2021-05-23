@@ -5,9 +5,7 @@ import { ICoin } from '../interface';
 import SearchCoins from './SearchCoins';
 
 
-const Header:React.FC = () => {
-    
-    
+const Header:React.FC = () => {  
     return (
         <div className='header__container'>
             <Link to='/'>

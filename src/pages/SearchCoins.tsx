@@ -1,8 +1,9 @@
-import React,{useState, useEffect} from 'react'
+import React,{useState, useRef, useEffect} from 'react'
 import { useHistory  } from 'react-router-dom';
 import { ICoin } from '../interface';
 import api from '../api/api';
 import Search from './Search'
+import Loading from '../Loading/Loading';
 
 
 const SearchCoins:React.FC = () => {
@@ -10,8 +11,12 @@ const SearchCoins:React.FC = () => {
 const [searchValue, setSearchValue]= useState('')
 const [searchCoins, setSearchCoins]= useState<ICoin[]>([])
 const [isLoading, setIsLoading] = useState(false)
+const ref=useRef<HTMLInputElement | null>(null);
 const history = useHistory()
 
+
+
+/*****Fetching DATA */
 useEffect(()=>{
  const SearchData=async()=>{
      setIsLoading(true)
@@ -26,6 +31,8 @@ useEffect(()=>{
  SearchData()
 })
 
+
+/* Filtering the fetched data */
 const filteredCoins = (searchCoins)
 .filter((coin) =>
   coin.name.toLowerCase().includes(searchValue.toLowerCase())
@@ -34,8 +41,28 @@ const filteredCoins = (searchCoins)
 
 const searchQueryPresent = searchValue.trim().length > 0;
 
+
+
+
+
+/*Creating outsideLogicClick */
+
+
+const handleSearch = (e: { target: any; }) => {
+  if (ref.current && !ref.current.contains(e.target)) {
+   setSearchValue('')
+  }
+};
+   
+useEffect(() => {
+  document.addEventListener('click', handleSearch);
+  return () => {
+    document.removeEventListener('click', handleSearch);
+  };
+}, []);
+
 return (
-    <>
+    <div ref={ref}>    
            <Search searchValue={searchValue}
        setSearchValue={setSearchValue}/>
         {searchQueryPresent && 
@@ -51,7 +78,8 @@ return (
             onClick={() =>history.push(`/coins/${coin.id}`, setSearchValue(''))}
             >
               {" "}
-              {coin.name}{" "}
+              <span className='search__value'>{coin.name}{" "}</span>
+         
           </div>
         
         </>
@@ -60,7 +88,7 @@ return (
        ))}
    
    
-    </>
+    </div>
 )
 }
 

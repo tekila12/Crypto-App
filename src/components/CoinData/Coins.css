@@ -92,7 +92,9 @@ table tbody tr td {
   margin: 0 auto;
   height: 500px !important;
 }
-
+.active {
+  color: red;
+}
 .canvas__container {
   margin: 0 auto;
 }

@@ -8,18 +8,16 @@ import CoinDetail from './components/CoinData/CoinDetail';
 import SearchCoins from './pages/SearchCoins';
 
 
-
-
 const App = () => {
   return (
     <div>  
       <Router>
         <Header />
         <SearchCoins />
-        <Switch> 
+        <Switch>       
         <Route path='/coins/:id' component={CoinDetail}/>
          <Route path='/coins' component={Coins}/>
-         <Route exact={true} path='/' component={Home}/>
+         <Route  path='/' component={Home}/>
         </Switch>
       </Router> 
       
