@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { historyOptions } from '../chartConfig/chartConfig';
-import Chart from 'chart.js/auto';
+import { Chart } from 'chart.js'
+import 'chartjs-adapter-moment';
 
 
 
@@ -32,6 +33,8 @@ const ChartData: React.FC<Props> = ({ data }) => {
   const { day, week, year, detail } = data;
   const [timeFormat, setTimeFormat] = useState("24h");
   const [isRebuildingCanvas, setIsRebuildingCanvas] = useState(false);
+  
+ 
 
   useEffect(() => {
     setIsRebuildingCanvas(true);
@@ -63,37 +66,21 @@ const ChartData: React.FC<Props> = ({ data }) => {
           },
         ],
       },
-      options: {
-        lineHeightAnnotation: {
-          always: true,
-          hover: true,
-          lineWeight: 1.5,
-        },
+      options: {     
       
         animation: {
           duration: 2000,
         },
-        maintainAspectRatio: true,
+        maintainAspectRatio: false,
         responsive: true,
         scales: {
-          yAxes: [{
-            ticks: {
-                beginAtZero: true
-            }
-        }],
-          x: [         
-            {  
-              ticks: {
-                beginAtZero: true,
-                autoSkip: false,
-                display: true,
-            },
+          x: 
+            {
               type: "time",
-            },
             
-          ],
+            },  
         },
-      },
+      }
     });
     return () => {
       chartInstance.destroy();
