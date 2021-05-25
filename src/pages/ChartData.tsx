@@ -1,8 +1,9 @@
 import React, { useRef, useEffect, useState } from "react";
-import { historyOptions } from '../chartConfig/chartConfig';
-import { Chart } from 'chart.js'
 import 'chartjs-adapter-moment';
-
+import annotationPlugin from 'chartjs-plugin-annotation';
+import { Chart, registerables } from 'chart.js';
+Chart.register(...registerables);
+Chart.register(annotationPlugin);
 
 
 
@@ -60,24 +61,36 @@ const ChartData: React.FC<Props> = ({ data }) => {
           {
             label: `${detail.name} price`,
             data: determineTimeFormat(timeFormat, day, week, year),
-            backgroundColor: 'rgba(134,159,152, 1)',
+            backgroundColor: "rgba(134,159,152, 1)",
             borderColor: "rgba(174, 305, 194, 0.4",
-            pointRadius: 0,
-          },
+
+          },        
         ],
       },
       options: {     
+        plugins: {
+          annotation: {
+            annotations: {
+           
+            }
+          }
+        },
       
-        animation: {
-          duration: 2000,
+        animations: {
+          tension: {
+            duration: 1000,
+            easing: 'linear',
+            from: 1,
+            to: 0,
+            loop: true
+          }
         },
         maintainAspectRatio: false,
         responsive: true,
         scales: {
           x: 
-            {
-              type: "time",
-            
+            {         
+              type: 'time',
             },  
         },
       }
@@ -110,7 +123,7 @@ const ChartData: React.FC<Props> = ({ data }) => {
     <div className='chart__container'>
     {renderPrice()}
       {isRebuildingCanvas ? undefined : (
-        <canvas ref={chartCanvasRef} id='myChart'></canvas>
+        <canvas ref={chartCanvasRef}  width={250} height={250} id='myChart'></canvas>
       )}
       <button className='time__format' onClick={() => setTimeFormat("24h")}>24h</button>
       <button className='time__format' onClick={() => setTimeFormat("7d")}>7d</button>

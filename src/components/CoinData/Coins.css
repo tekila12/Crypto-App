@@ -88,7 +88,7 @@ table tbody tr td {
 
 .chart__container {
   background: var(--background-color);
-  width: 50%;
+  width: 100vw;
   margin: 0 auto;
   height: 500px !important;
 }
@@ -97,10 +97,6 @@ table tbody tr td {
 }
 .canvas__container {
   margin: 0 auto;
-}
-
-#myChart {
-  height: 500px;
 }
 
 .time__format {
