@@ -55,7 +55,7 @@ const ChartData: React.FC<Props> = ({ data }) => {
     }
   
     const chartInstance = new Chart(chartCanvasRef.current, {
-      type: "line",
+      type: "bar",
       data: {
         datasets: [
           {
@@ -63,7 +63,6 @@ const ChartData: React.FC<Props> = ({ data }) => {
             data: determineTimeFormat(timeFormat, day, week, year),
             backgroundColor: "rgba(134,159,152, 1)",
             borderColor: "rgba(174, 305, 194, 0.4",
-
           },        
         ],
       },
