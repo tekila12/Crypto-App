@@ -55,7 +55,7 @@ const ChartData: React.FC<Props> = ({ data }) => {
     }
   
     const chartInstance = new Chart(chartCanvasRef.current, {
-      type: "bar",
+      type: "line",
       data: {
         datasets: [
           {
@@ -89,7 +89,13 @@ const ChartData: React.FC<Props> = ({ data }) => {
         scales: {
           x: 
             {         
-              type: 'time',
+              type: 'timeseries',
+              time: {
+                displayFormats: {
+                    quarter: 'H MMM YYYY'
+                }
+            }
+                  
             },  
         },
       }
