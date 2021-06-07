@@ -2,6 +2,8 @@ import React, { useRef, useEffect, useState } from "react";
 import 'chartjs-adapter-moment';
 import annotationPlugin from 'chartjs-plugin-annotation';
 import { Chart, registerables } from 'chart.js';
+import {BsArrowUpShort} from 'react-icons/bs'
+import {BsArrowDownShort} from 'react-icons/bs'
 Chart.register(...registerables);
 Chart.register(annotationPlugin);
 
@@ -35,7 +37,7 @@ const ChartData: React.FC<Props> = ({ data }) => {
   const [timeFormat, setTimeFormat] = useState("24h");
   const [isRebuildingCanvas, setIsRebuildingCanvas] = useState(false);
   
- 
+
 
   useEffect(() => {
     setIsRebuildingCanvas(true);
@@ -60,21 +62,18 @@ const ChartData: React.FC<Props> = ({ data }) => {
         datasets: [
           {
             label: `${detail.name} price`,
-            data: determineTimeFormat(timeFormat, day, week, year),
-            backgroundColor: "rgba(134,159,152, 1)",
+            data: determineTimeFormat(timeFormat, day, week, year),          
+            parsing: {
+            yAxisKey: 'y',
+            xAxisKey: 't',
+            },
+            backgroundColor: "rgba(154,159,152, 1)",
             borderColor: "rgba(174, 305, 194, 0.4",
           },        
         ],
       },
-      options: {     
-        plugins: {
-          annotation: {
-            annotations: {
-           
-            }
-          }
-        },
       
+      options: {    
         animations: {
           tension: {
             duration: 1000,
@@ -87,16 +86,12 @@ const ChartData: React.FC<Props> = ({ data }) => {
         maintainAspectRatio: false,
         responsive: true,
         scales: {
-          x: 
-            {         
-              type: 'timeseries',
-              time: {
-                displayFormats: {
-                    quarter: 'H MMM YYYY'
-                }
-            }
-                  
-            },  
+          x: {
+            ticks: {
+              source: "data"
+            },
+            type: 'time',
+          },
         },
       }
     });
@@ -109,14 +104,20 @@ const ChartData: React.FC<Props> = ({ data }) => {
     if (detail) {
       return (
         <>
-          <p className="">${detail.current_price}</p>
+          <p className="chart__price">${detail.current_price}</p>
           <p
-            className={
-              detail.price_change_24h < 0
-                ? "text__danger "
-                : "text__success "
-            }
-          >
+              className={
+                detail.price_change_percentage_24h < 0
+                  ? "text__danger"
+                  : "text__success"
+              }
+            >
+              {" "}
+              {detail.price_change_percentage_24h < 0 ? (
+                <BsArrowDownShort className="arrow__up"></BsArrowDownShort>
+              ) : (
+                <BsArrowUpShort className="down__arrow"></BsArrowUpShort>
+              )}
             {detail.price_change_percentage_24h}%
           </p>
         </>

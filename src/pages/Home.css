@@ -54,6 +54,7 @@
   margin-top: 10px;
   margin-bottom: 10px;
   transition: 0.3s all linear;
+  margin-bottom: 50px;
 }
 
 .trending__button:hover {
@@ -171,27 +172,6 @@
   text-align: left;
 }
 
-@media all and(max-width:1088px) {
-  .home__container {
-    width: 100%;
-  }
-  .trending__container {
-    display: inline-grid;
-    grid-template-columns: 19px 11px 10px !important;
-    border: 1px solid rgb(214, 212, 212);
-    padding: 10px;
-    width: 200px;
-    text-align: center;
-    margin: 3px;
-    grid-template-rows: 30px;
-  }
-}
-
-@media all and(max-width:608px) {
-  .home__container > h1 {
-    font-size: 11px !important;
-  }
-}
 @media all and (max-width: 520px) {
   .home__container {
     width: 100%;

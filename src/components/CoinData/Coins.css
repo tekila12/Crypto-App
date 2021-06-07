@@ -44,10 +44,12 @@ table tbody tr td {
 
 .text__danger {
   color: red;
+  font-family: "Lato", sans-serif;
 }
 
 .text__success {
   color: green;
+  font-family: "Lato", sans-serif;
 }
 
 /*Pagination */
@@ -88,7 +90,7 @@ table tbody tr td {
 
 .chart__container {
   background: var(--background-color);
-  width: 100vw;
+  width: 60vw;
   margin: 0 auto;
   height: 500px !important;
 }
@@ -100,11 +102,28 @@ table tbody tr td {
 }
 
 .time__format {
-  background: var(--white);
+  margin-top: 10px;
+  background: var(--background-color);
   padding: 6px;
   margin-right: 5px;
   margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: 700;
   font-family: "Lato", sans-serif;
+  color: var(--color);
+  cursor: pointer;
+  transition: 0.3s all linear;
+  border: 2px solid rgb(21, 54, 131);
+}
+
+.chart__price {
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--color);
+}
+.time__format:hover {
+  background: rgba(174, 305, 194, 0.4);
 }
 @media all and (max-width: 1088px) {
   table thead tr th {
@@ -149,6 +168,10 @@ table tbody tr td {
 @media all and (max-width: 580px) {
   .table {
     width: 100%;
+  }
+
+  .chart__container {
+    width: 90vw;
   }
   table thead tr th {
     width: 26.2%;
@@ -237,7 +260,9 @@ table tbody tr td {
     width: 26.8%;
     font-size: 11px;
   }
-
+  .chart__container {
+    width: 95vw;
+  }
   .table__content {
     width: 82px !important;
     font-size: 12px;
