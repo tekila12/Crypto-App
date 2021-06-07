@@ -1,8 +1,7 @@
-import React,{useState, useEffect} from 'react'
-import { Link, useHistory  } from 'react-router-dom';
+import React from 'react'
+import { Link} from 'react-router-dom';
 import DarkMode from '../Theme/DarkMode';
-import { ICoin } from '../interface';
-import SearchCoins from './SearchCoins';
+
 
 
 const Header:React.FC = () => {  

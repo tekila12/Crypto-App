@@ -3,7 +3,7 @@ import { useHistory  } from 'react-router-dom';
 import { ICoin } from '../interface';
 import api from '../api/api';
 import Search from './Search'
-import Loading from '../Loading/Loading';
+
 
 
 const SearchCoins:React.FC = () => {
