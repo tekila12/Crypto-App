@@ -4,24 +4,28 @@ import {  useHistory} from 'react-router-dom';
 import Loading from '../Loading/Loading';
 import './Home.css'
 import api from '../api/api';
+import axios from 'axios';
+
 const Home:React.FC= () => {
+    
     
     const history= useHistory()
     const [isLoading, setIsLoading] = useState(false);
     const [trending, setTrending ] = useState<Coin[]>([])
     useEffect(()=>{
-        const fetchData = async () => {
-            setIsLoading(true);
-            const response = await api.get("/search/trending", {
-                params: {      
-                  },
-                });
-                setTrending(response.data.coins);
-                setIsLoading(false);
-                console.log(response)
-              };
-            fetchData()
-        },[])
+      const fetchData = async () => {
+          setIsLoading(true);
+          const response = await api.get("/search/trending", {
+              params: {      
+                },
+              });
+              setTrending(response.data.coins);
+              setIsLoading(false);
+              console.log(response)
+            };
+          fetchData()
+      },[])
+
   
 
 

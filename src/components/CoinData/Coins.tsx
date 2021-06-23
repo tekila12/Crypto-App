@@ -23,14 +23,11 @@ const CoinTable = lazy(() => import('../../components/CoinData/CoinTable'))
     setPage((nextPage) => nextPage + 1);
   };
    
-   
-
-   
       
       useEffect(()=>{
         const fetchData = async () => {
           setIsLoading(true);
-          const response = await api.get(`/coins/markets?&order=market_cap_desc&page=${page}&per_page=10&sparkline=false`, {
+          const response = await api.get(`coins/markets?&order=market_cap_desc&page=${page}&per_page=10&sparkline=false`, {
             params: {
               vs_currency: "usd",       
             },

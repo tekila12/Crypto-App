@@ -3,6 +3,7 @@ import { useHistory  } from 'react-router-dom';
 import { ICoin } from '../interface';
 import api from '../api/api';
 import Search from './Search'
+import axios from 'axios';
 
 
 
@@ -18,18 +19,18 @@ const history = useHistory()
 
 /*****Fetching DATA */
 useEffect(()=>{
- const SearchData=async()=>{
-     setIsLoading(true)
-     const response= await api.get('/coins/markets/',{
-         params:{
-            vs_currency: "usd",   
-         }
-     })
-     setIsLoading(false)
-     setSearchCoins(response.data);
- }
- SearchData()
-})
+  const SearchData=async()=>{
+      setIsLoading(true)
+      const response= await api.get('/coins/markets/',{
+          params:{
+             vs_currency: "usd",   
+          }
+      })
+      setIsLoading(false)
+      setSearchCoins(response.data);
+  }
+  SearchData()
+ },[])
 
 
 /* Filtering the fetched data */
