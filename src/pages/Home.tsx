@@ -8,7 +8,7 @@ import axios from 'axios';
 
 const Home:React.FC= () => {
     
-    
+    /*fetching data */ 
     const history= useHistory()
     const [isLoading, setIsLoading] = useState(false);
     const [trending, setTrending ] = useState<Coin[]>([])
@@ -45,6 +45,7 @@ const Home:React.FC= () => {
           </div>
           ))}
           <div>
+              /* pushing params to a coins Component */
           <button className='trending__button' onClick={()=>{history.push('/coins')}}>More coins...</button>
           </div>
         </div>
