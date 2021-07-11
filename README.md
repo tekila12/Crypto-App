@@ -8,3 +8,5 @@ It has a table to see all the coins and their current prices\
 
 
 It is using Chart.js to display graphs of the coins
+
+You can view the deployed version of an app on https://crypto3321.netlify.app/
